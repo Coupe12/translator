@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Speech to text</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+
+
+
+
+
+    <!-- animate code-->
+    <canvas id="canvasbg"></canvas>
+    <canvas id="canvas" class="svg"></canvas>
+
+    <svg>
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0
+                                                               0 1 0 0 0
+                                                               0 0 1 0 0
+                                                               0 0 0 19 -10"
+                                                               result ="goo"/>
+                <feBlend in="SourceGraphic" in2="goo"/>                                             
+            </filter>
+        </defs>
+    </svg>
+
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <button class=" btn btn-start btn-first m-3"> start recording</button>
+                <button class="btn btn-second btn-end m-3"> end recording</button>
+                <div id="recording" style="display:none;position:absolute;" class="col-md-3">
+                    <img src="img/white.gif" class="img-fluid">
+                </div>
+                <textarea class="output form-control" id="initial-statement" style="height:300px" disabled></textarea>
+
+            </div>
+
+
+
+            <div class="col-md-6">
+                <button class="btn btn-first carry-btn m-3"> carry-recording</button>
+
+                <select class="btn" id="select">
+                    <option value="English">English</option>
+                    <option value="French">French</option>
+                    <option value="Yoruba">Yoruba</option>
+                </select>
+                <button class="btn btn-second translate-btn m-3"> Translate</button>
+                <textarea class=" form-control" id="final-statement" style="height:300px" style="text-transform: lowercase;"></textarea>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
